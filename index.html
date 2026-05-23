@@ -29,12 +29,270 @@
         .message { font-size: 1.15rem; line-height: 2.2; text-align: center; color: #444; font-weight: 700; white-space: pre-wrap; }
         .thankYouMessage { font-family:  Tajawal ,  Cairo , sans-serif; font-size: 1.2rem; line-height: 2.1; font-weight: 600; color: #2d2f50; }
         
-        /* توقيعات بخط اليد */
         .signature {
             text-align: center;
             margin-top: 30px;
             padding-top: 20px;
             border-top: 2px dashed #ffb7c5;
+        }
+        .signature-item {
+            margin: 12px 0;
+            font-size: 1.3rem;
+        }
+        .handwriting {
+            font-family:  Great Vibes ,  Amiri ,  Tajawal , cursive;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+        }
+        
+        .nextPageButton { display: none; margin: 25px auto; padding: 14px 35px; font-size: 1.3rem; color: white; background: linear-gradient(135deg, #7c62de, #9a7df6); border: none; border-radius: 50px; cursor: pointer; font-family:  Cairo , sans-serif; font-weight: bold; }
+        .gameButton { margin: 25px auto; padding: 14px 35px; font-size: 2rem; color: white; background: linear-gradient(135deg, #7c62de, #9a7df6); border: none; border-radius: 60px; cursor: pointer; font-family:  Cairo , sans-serif; font-weight: bold; display: block; width: fit-content; transition: 0.3s; }
+        .gameButton:hover { transform: scale(1.05); }
+        .game-container { max-width: 700px; margin: 30px auto; background: white; border-radius: 40px; padding: 35px 25px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); text-align: center; border: 2px solid #ffb7c5; }
+        .game-title { font-size: 2.2rem; font-weight: 900; color: #ff4d6d; margin-bottom: 10px; }
+        .game-subtitle { font-size: 1.2rem; color: #7c62de; margin-bottom: 35px; font-weight: bold; }
+        .slider-container { padding: 20px 10px; position: relative; }
+        .slider { width: 100%; height: 12px; -webkit-appearance: none; background: linear-gradient(90deg, #ff4d6d, #ff4d6d, #7c62de, #7c62de, #ffde9c); border-radius: 12px; outline: none; margin: 30px 0; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; background: #ff4d6d; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); border: 3px solid white; }
+        .slider-markers { display: flex; justify-content: space-between; padding: 0 10px; margin-top: -20px; margin-bottom: 20px; }
+        .marker { font-size: 0.8rem; font-weight: bold; color: #7c62de; background: white; padding: 2px 8px; border-radius: 20px; border: 1px solid #ffb7c5; }
+        .percentage-value { font-size: 3rem; font-weight: 900; color: #d4af37; text-shadow: 2px 2px 0 #b8860b; margin: 20px 0; }
+        .message-box { background: #fff0f5; border-radius: 30px; padding: 25px; margin-top: 25px; border: 2px dashed #ffb7c5; min-height: 120px; display: flex; align-items: center; justify-content: center; }
+        .game-message { font-size: 1.25rem; font-weight: 700; color: #4a3e7d; line-height: 1.8; }
+        .restart-game-btn { margin-top: 20px; background: linear-gradient(135deg, #ff4d6d, #ff758f); border: none; font-size: 1.2rem; padding: 10px 25px; border-radius: 40px; cursor: pointer; font-family:  Cairo , sans-serif; font-weight: bold; color: white; display: block; width: fit-content; margin-left: auto; margin-right: auto; }
+        .balloon { position: fixed; bottom: -120px; font-size: 3rem; cursor: pointer; animation: floatUp linear forwards; z-index: 999; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); }
+        @keyframes floatUp { to { transform: translateY(-130vh) translateX(40px); opacity: 0; } }
+        .center-message { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.85); color: #fff9c4; font-size: 1.2rem; font-weight: bold; padding: 10px 24px; border-radius: 50px; text-align: center; z-index: 2000; font-family:  Cairo , sans-serif; white-space: nowrap; backdrop-filter: blur(6px); pointer-events: none; animation: fadeOutFast 2s forwards; }
+        @keyframes fadeOutFast { 0% { opacity: 1; transform: translate(-50%, -50%) scale(0.9); } 20% { transform: translate(-50%, -50%) scale(1.05); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); visibility: hidden; } }
+        .footer-credit { text-align: center; margin-top: 30px; padding: 15px; font-size: 0.75rem; color: #b34e71; border-top: 1px dashed #ffb7c5; max-width: 650px; margin-left: auto; margin-right: auto; }
+    </style>
+</head>
+<body>
+
+<section id="welcomePage">
+    <div class="title">اهلا يا مس منوره🌝</div>
+    <button class="cuteButton" id="cuteButton">دوسي هنا😂</button>
+    <div id="countdown"></div>
+</section>
+
+<section id="birthdayPage">
+    <div class="topImageContainer"><img class="topImage" src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=1200&auto=format&fit=crop" alt="عيد ميلاد"></div>
+    <h1 class="hbHeader">🎉 Happy Birthday Ms. Nahla 🎉</h1>
+    <div class="birthDate">🎂 25 / 5 🎂</div>
+    <div style="text-align: center;"><span class="sweet-year">💗✨سنة حلوه يا جميـل</span></div>
+    <div class="golden-wrapper"><div class="golden-number">27</div></div>
+    <div class="exam-text">✨ 27 سنة امتحانات وجدعنه 😂😂 ✨</div>
+    <div class="card"><div class="message" id="typingText"></div></div>
+    <button class="nextPageButton" id="nextPageBtn">دوسه كمان هنا معلش🙃</button>
+</section>
+
+<section id="thankYouPage">
+    <h1 class="hbHeader">رسالة شڪر من القلب ♡</h1>
+    <div class="card">
+        <div class="message thankYouMessage">
+            حقيقي يا مس مفيش كلام يوفي تعبك ومجهودك الجميل معانا طول السنة.. حضرتك مش مجرد مدرسة شاطرة وخلاص، حضرتك كنتِ دايماً بتسيبي أثر طيب وعظيم في عقولنا وقلوبنا!<br><br>
+            شكراً على صبرك وعلى كل طاقة إيجابية وضحكة حلوة كنتِ بتديهالنا وقت تعبنا.. ربنا يجعل كل مجهودك في ميزان حسناتك 🤍🤍
+        </div>
+        <div class="signature">
+            <div class="signature-item handwriting">~ بيشوي مخلص</div>
+            <div class="signature-item handwriting">~ محمد علوان</div>
+            <div class="signature-item handwriting">~ محمد غلاب</div>
+            <div class="signature-item handwriting">~ محمد علي</div>
+        </div>
+    </div>
+    <button class="gameButton" id="gameButton">🎈 لعبة المفاجأة 🎈</button>
+</section>
+
+<section id="gamePage">
+    <div class="game-container">
+        <div class="game-title">🎈 بتحبي حصتنا قد اي؟؟ 🎈</div>
+        <div class="game-subtitle">قولي الصراحه متخافيش 🔪🔪</div>
+        <div class="slider-container">
+            <input type="range" min="1" max="100" value="50" class="slider" id="loveSlider">
+            <div class="slider-markers"><span class="marker">1</span><span class="marker">50</span><span class="marker">100</span></div>
+            <div class="percentage-value" id="percentageDisplay">50%</div>
+        </div>
+        <div class="message-box"><div class="game-message" id="gameMessage">اسحب الشريط عشان تعرفي...</div></div>
+        <button class="restart-game-btn" id="restartFromGameBtn">🏠 رجوع للبداية</button>
+    </div>
+    <div class="footer-credit">🤍صُنع بحب بواسطة Mo.hamed | مجرد محاولة بسيطة لإسعادڪ 🤍</div>
+</section>
+
+<audio id="balloonPopSound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/1726/1726-84.wav" type="audio/wav">
+</audio>
+<audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    let typingTimeout = null;
+    let isTypingStarted = false;
+    let countdownInterval = null;
+
+    const messages = {
+        50: "50% حب نص كم ده مينفعش معانا", 60: "60% مش طموحي لا 📉", 70: "70% اول مره اشوف بخل في المشاعر 🙂",
+        80: "80% لا انا كده ازعل 😤", 90: "90% شايله الباقي لمين؟🔪", 95: "95% لا احنا كده هنتغر 🥹🥹🤍",
+        100: "100% احنا اڪتر 🥰♥️♥️"
+    };
+
+    function getMessageForPercent(percent) { 
+        if(messages[percent]) return messages[percent];
+        if(percent < 50) return "😅 لسه بدري أوي ... زودي شوية!";
+        if(percent < 70) return "🙂 ماشي الحال، بس ممكن أحسن!";
+        if(percent < 90) return "😍 بداية حلوة ... كملي كمان!";
+        return "💖 قربتي أوي للأمان 💖";
+    }
+
+    function fullRestart() {
+        if (typingTimeout) clearTimeout(typingTimeout);
+        if (countdownInterval) clearInterval(countdownInterval);
+        document.querySelectorAll( .balloon ).forEach(b => b.remove());
+        isTypingStarted = false;
+        document.getElementById( birthdayPage ).style.display =  none ;
+        document.getElementById( thankYouPage ).style.display =  none ;
+        document.getElementById( gamePage ).style.display =  none ;
+        document.getElementById( welcomePage ).style.display =  flex ;
+        document.getElementById( typingText ).innerHTML =   ;
+        document.getElementById( nextPageBtn ).style.display =  none ;
+        document.getElementById( cuteButton ).style.display =  inline-block ;
+        document.getElementById( countdown ).innerHTML =   ;
+        const slider = document.getElementById( loveSlider );
+        if (slider) { slider.value = 50; document.getElementById( percentageDisplay ).innerText =  50% ; document.getElementById( gameMessage ).innerHTML =  اسحب الشريط عشان تعرفي... ; }
+        const music = document.getElementById( bgMusic ); music.pause(); music.currentTime = 0;
+    }
+
+    function openGift() {
+        const btn = document.getElementById("cuteButton");
+        btn.style.display = "none";
+        let count = 3;
+        const countdownDiv = document.getElementById("countdown");
+        if (countdownInterval) clearInterval(countdownInterval);
+        countdownDiv.innerHTML = "3";
+        countdownInterval = setInterval(() => {
+            count--;
+            if (count > 0) { 
+                countdownDiv.innerHTML = count; 
+            } else {
+                clearInterval(countdownInterval);
+                countdownDiv.innerHTML = "";
+                document.getElementById("welcomePage").style.display = "none";
+                document.getElementById("birthdayPage").style.display = "block";
+                const music = document.getElementById("bgMusic");
+                music.play().catch(e => console.log("Auto-play prevented"));
+                launchFireworks(10);
+                spawnBalloons(15);
+                if (typingTimeout) clearTimeout(typingTimeout);
+                typingTimeout = setTimeout(() => { startTypingMessage(); }, 4000);
+            }
+        }, 1000);
+    }
+
+    function startTypingMessage() {
+        if (isTypingStarted) return;
+        isTypingStarted = true;
+        const container = document.getElementById("typingText");
+        if (!container) return;
+        container.innerHTML = "";
+        const fullText = "كل عام وأنتِ طيبة يا مس نهلة، نتمنى لكِ سنة جديدة جميلة مليئة بالراحة والنجاح والتوفيق في كل خطواتكِ، وأن يحقق الله لكِ كل ما تتمنينه. عيد ميلاد سعيد وعقبال سنين طويلة وأنتِ في كامل صحتكِ وعافيتكِ وتألقكِ الدائم 🌸🎂";
+        let i = 0;
+        function typeCharacter() {
+            if (i < fullText.length) { container.innerHTML += fullText[i]; i++; setTimeout(typeCharacter, 45); }
+            else { document.getElementById("nextPageBtn").style.display = "block"; }
+        }
+        typeCharacter();
+    }
+
+    function launchFireworks(burstCount = 10) {
+        for (let i = 0; i < burstCount; i++) { 
+            setTimeout(() => { 
+                canvasConfetti({ particleCount: 150, spread: 100, origin: { y: 0.6, x: Math.random() }, startVelocity: 22, colors: [ #ff4d6d ,  #f9c74f ,  #90be6d ,  #f9844a ,  #c77dff ], decay: 0.9 });
+            }, i * 90); 
+        }
+        setTimeout(() => { canvasConfetti({ particleCount: 400, spread: 130, origin: { y: 0.5 }, startVelocity: 28 }); }, 250);
+    }
+
+    function showCenterMessage(msg) { 
+        const messageDiv = document.createElement( div ); 
+        messageDiv.className =  center-message ; 
+        messageDiv.innerText = msg; 
+        document.body.appendChild(messageDiv); 
+        setTimeout(() => { if(messageDiv && messageDiv.parentNode) messageDiv.remove(); }, 2000); 
+    }
+
+    function spawnBalloons(count = 12) {
+        const phrasesList = ["🎈 Happy Birthday 🎈", "كل عام وانتي بخير 💖", "عايزين اجازه 😂🙏", "🎂 عقبال ١٠٠ سنة", "💐 انتي الأمل", "🍰 كل سنة وانتي طيبة"];
+        for (let i = 0; i < count; i++) {
+            const balloon = document.createElement( div );
+            const randomEmoji = [ 🎈 ,  🎉 ,  🎊 ,  🎈 ,  💕 ][Math.floor(Math.random() * 5)];
+            balloon.innerText = randomEmoji;
+            balloon.classList.add( balloon );
+            balloon.style.fontSize = `${2.2 + Math.random() * 1.6}rem`;
+            balloon.style.left = Math.random() * 90 + "vw";
+            balloon.style.animationDuration = 5 + Math.random() * 6 + "s";
+            balloon.style.animationDelay = Math.random() * 2 + "s";
+            const randomPhrase = phrasesList[Math.floor(Math.random() * phrasesList.length)];
+            balloon.setAttribute( data-phrase , randomPhrase);
+            balloon.addEventListener( click , (e) => { 
+                e.stopPropagation(); 
+                showCenterMessage(balloon.getAttribute( data-phrase )); 
+                const sound = document.getElementById("balloonPopSound"); 
+                if (sound) { sound.currentTime = 0; sound.play().catch(e=>{}); } 
+                canvasConfetti({ particleCount: 50, spread: 60, origin: { x: parseFloat(balloon.style.left) / 100, y: 0.7 }, colors: [ #fe8c6e ,  #ffd966 ] }); 
+                balloon.remove(); 
+            });
+            document.body.appendChild(balloon);
+            setTimeout(() => { if(balloon && balloon.parentNode) balloon.remove(); }, 12000);
+        }
+    }
+
+    function goToThankYouPage() { 
+        document.getElementById("birthdayPage").style.display = "none"; 
+        document.getElementById("thankYouPage").style.display = "block"; 
+        window.scrollTo({ top: 0, behavior:  smooth  }); 
+        launchFireworks(12); 
+        spawnBalloons(10); 
+        showCenterMessage("❤️ شكراً من القلب يا مس نهلة ❤️"); 
+    }
+    
+    function goToGamePage() { 
+        document.getElementById("thankYouPage").style.display = "none"; 
+        document.getElementById("gamePage").style.display = "block"; 
+        window.scrollTo({ top: 0, behavior:  smooth  }); 
+        const slider = document.getElementById("loveSlider"); 
+        if (slider) { 
+            const val = slider.value; 
+            document.getElementById("percentageDisplay").innerText = val + "%"; 
+            document.getElementById("gameMessage").innerHTML = getMessageForPercent(parseInt(val)); 
+        } 
+    }
+
+    document.getElementById( cuteButton ).addEventListener( click , openGift);
+    document.getElementById( nextPageBtn ).addEventListener( click , goToThankYouPage);
+    document.getElementById( gameButton ).addEventListener( click , goToGamePage);
+    document.getElementById( restartFromGameBtn ).addEventListener( click , fullRestart);
+
+    const slider = document.getElementById("loveSlider");
+    if (slider) {
+        slider.addEventListener("input", function(e) {
+            const val = parseInt(e.target.value);
+            document.getElementById("percentageDisplay").innerText = val + "%";
+            document.getElementById("gameMessage").innerHTML = getMessageForPercent(val);
+            if (val === 100) { launchFireworks(12); spawnBalloons(15); showCenterMessage("💯 ياااااه 100%!!! 💯"); }
+            else if (val >= 90) { launchFireworks(3); }
+        });
+    }
+
+    setInterval(() => {
+        const isBirth = document.getElementById("birthdayPage").style.display === "block";
+        const isThank = document.getElementById("thankYouPage").style.display === "block";
+        const isGame = document.getElementById("gamePage").style.display === "block";
+        if(isBirth || isThank || isGame) { launchFireworks(2); if(Math.random() > 0.7) spawnBalloons(2); }
+    }, 16000);
+</script>
+</body>
+</html>
+    border-top: 2px dashed #ffb7c5;
         }
         .signature-item {
             margin: 12px 0;
