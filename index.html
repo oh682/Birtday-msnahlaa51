@@ -1,68 +1,729 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>عيد ميلاد سعيد مس نهلة 🎂✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@500;700&family=Great+Vibes&family=Amiri&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Cairo", sans-serif; background: linear-gradient(180deg, #fff0f5, #f3ebff); overflow-x: hidden; background-size: 400% 400%; animation: bgMove 12s ease infinite; }
-        @keyframes bgMove { 0% { background-position: left top; } 50% { background-position: right bottom; } 100% { background-position: left top; } }
-        #welcomePage { height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; background: linear-gradient(135deg, #ffccd5, #d8ccff); position: relative; gap: 40px; }
-        .title { font-size: 3rem; color: #4a3e7d; font-weight: 900; text-align: center; padding: 0 20px; }
-        .cuteButton { padding: 18px 50px; font-size: 1.7rem; font-family:  Tajawal ,  Cairo , sans-serif; font-weight: 800; color: white; border: none; border-radius: 60px; cursor: pointer; background: linear-gradient(135deg, #ff4d6d, #ff758f); box-shadow: 0 10px 30px rgba(255, 77, 109, .35); transition: 0.35s; }
-        .cuteButton:hover { transform: scale(1.05); }
-        #countdown { font-size: 5rem; font-weight: 900; color: white; text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
-        #birthdayPage, #thankYouPage, #gamePage { display: none; padding: 20px; animation: fadeIn 1.2s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .topImageContainer { max-width: 650px; margin: auto; border-radius: 25px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, .1); }
-        .topImage { width: 100%; height: 300px; object-fit: cover; }
-        .hbHeader { text-align: center; font-size: 2.5rem; margin-top: 25px; background: linear-gradient(120deg, #ff4d6d, #7c62de); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; }
-        .birthDate { text-align: center; font-size: 1.6rem; font-weight: bold; margin-bottom: 5px; color: #7c62de; }
-        .sweet-year { text-align: center; font-size: 1.2rem; font-weight: 700; color: #e85d8a; background: #fff0f5; display: inline-block; padding: 5px 20px; border-radius: 40px; margin: 0 auto 15px; width: fit-content; }
-        .golden-wrapper { display: flex; justify-content: center; margin: 15px auto 5px auto; }
-        .golden-number { font-size: 6rem; font-weight: 900; color: #d4af37; text-shadow: 4px 4px 0 #b8860b, 8px 8px 0 rgba(0,0,0,0.1); background: linear-gradient(135deg, #f9e6b3, #ffde9c); display: inline-block; padding: 10px 45px; border-radius: 80px; letter-spacing: 8px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); border: 3px solid #ffbf00; border-left: 8px solid #ffaa33; border-right: 8px solid #ffaa33; }
-        .exam-text { text-align: center; font-size: 0.9rem; font-weight: 800; color: #b34e71; background: #fff4f9; display: inline-block; padding: 4px 15px; border-radius: 40px; margin: 0 auto 20px auto; width: fit-content; }
-        .card { background: white; max-width: 650px; margin: 15px auto; padding: 30px; border-radius: 25px; border: 2px dashed #ffe0eb; }
-        .message { font-size: 1.15rem; line-height: 2.2; text-align: center; color: #444; font-weight: 700; white-space: pre-wrap; }
-        .thankYouMessage { font-family:  Tajawal ,  Cairo , sans-serif; font-size: 1.2rem; line-height: 2.1; font-weight: 600; color: #2d2f50; }
-        
-        .signature {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px dashed #ffb7c5;
-        }
-        .signature-item {
-            margin: 12px 0;
-            font-size: 1.3rem;
-        }
-        .handwriting {
-            font-family:  Great Vibes ,  Amiri ,  Tajawal , cursive;
-            font-size: 1.6rem;
-            letter-spacing: 1px;
-        }
-        
-        .nextPageButton { display: none; margin: 25px auto; padding: 14px 35px; font-size: 1.3rem; color: white; background: linear-gradient(135deg, #7c62de, #9a7df6); border: none; border-radius: 50px; cursor: pointer; font-family:  Cairo , sans-serif; font-weight: bold; }
-        .gameButton { margin: 25px auto; padding: 14px 35px; font-size: 2rem; color: white; background: linear-gradient(135deg, #7c62de, #9a7df6); border: none; border-radius: 60px; cursor: pointer; font-family:  Cairo , sans-serif; font-weight: bold; display: block; width: fit-content; transition: 0.3s; }
-        .gameButton:hover { transform: scale(1.05); }
-        .game-container { max-width: 700px; margin: 30px auto; background: white; border-radius: 40px; padding: 35px 25px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); text-align: center; border: 2px solid #ffb7c5; }
-        .game-title { font-size: 2.2rem; font-weight: 900; color: #ff4d6d; margin-bottom: 10px; }
-        .game-subtitle { font-size: 1.2rem; color: #7c62de; margin-bottom: 35px; font-weight: bold; }
-        .slider-container { padding: 20px 10px; position: relative; }
-        .slider { width: 100%; height: 12px; -webkit-appearance: none; background: linear-gradient(90deg, #ff4d6d, #ff4d6d, #7c62de, #7c62de, #ffde9c); border-radius: 12px; outline: none; margin: 30px 0; }
-        .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; background: #ff4d6d; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); border: 3px solid white; }
-        .slider-markers { display: flex; justify-content: space-between; padding: 0 10px; margin-top: -20px; margin-bottom: 20px; }
-        .marker { font-size: 0.8rem; font-weight: bold; color: #7c62de; background: white; padding: 2px 8px; border-radius: 20px; border: 1px solid #ffb7c5; }
-        .percentage-value { font-size: 3rem; font-weight: 900; color: #d4af37; text-shadow: 2px 2px 0 #b8860b; margin: 20px 0; }
-        .message-box { background: #fff0f5; border-radius: 30px; padding: 25px; margin-top: 25px; border: 2px dashed #ffb7c5; min-height: 120px; display: flex; align-items: center; justify-content: center; }
-        .game-message { font-size: 1.25rem; font-weight: 700; color: #4a3e7d; line-height: 1.8; }
-        .restart-game-btn { margin-top: 20px; background: linear-gradient(135deg, #ff4d6d, #ff758f); border: none; font-size: 1.2rem; padding: 10px 25px; border-radius: 40px; cursor: pointer; font-family:  Cairo , sans-serif; font-weight: bold; color: white; display: block; width: fit-content; margin-left: auto; margin-right: auto; }
-        .balloon { position: fixed; bottom: -120px; font-size: 3rem; cursor: pointer; animation: floatUp linear forwards; z-index: 999; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); }
-        @keyframes floatUp { to { transform: translateY(-130vh) translateX(40px); opacity: 0; } }
-        .center-message { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.85); color: #fff9c4; font-size: 1.2rem; font-weight: bold; padding: 10px 24px; border-radius: 50px; text-align: center; z-index: 2000; font-family:  Cairo , sans-serif; white-space: nowrap; backdrop-filter: blur(6px); pointer-events: none; animation: fadeOutFast 2s forwards; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>عيد ميلاد سعيد مس نهلة 🎂✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:"Cairo",sans-serif;
+background:linear-gradient(180deg,#fff0f5,#efe6ff);
+overflow-x:hidden;
+min-height:100vh;
+background-size:400% 400%;
+animation:bgMove 10s ease infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:left top;}
+50%{background-position:right bottom;}
+100%{background-position:left top;}
+}
+
+section{
+padding:20px;
+display:none;
+animation:fade .8s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(25px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* الصفحة الأولى */
+
+#welcomePage{
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+height:100vh;
+gap:35px;
+background:linear-gradient(135deg,#ffd4dd,#dccdff);
+position:relative;
+overflow:hidden;
+}
+
+.title{
+font-size:3rem;
+font-weight:900;
+text-align:center;
+padding:0 20px;
+color:#49397f;
+}
+
+.cuteButton{
+padding:18px 50px;
+border:none;
+border-radius:60px;
+font-size:1.6rem;
+font-family:"Tajawal",sans-serif;
+font-weight:800;
+cursor:pointer;
+color:white;
+background:linear-gradient(135deg,#ff4d6d,#ff7e95);
+box-shadow:0 10px 30px rgba(255,77,109,.3);
+transition:.3s;
+}
+
+.cuteButton:hover{
+transform:scale(1.05);
+}
+
+#countdown{
+font-size:6rem;
+font-weight:900;
+color:white;
+text-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+/* الصفحة الثانية */
+
+.topImageContainer{
+max-width:650px;
+margin:auto;
+overflow:hidden;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.topImage{
+width:100%;
+height:320px;
+object-fit:cover;
+}
+
+.hbHeader{
+text-align:center;
+font-size:2.5rem;
+font-weight:900;
+margin-top:25px;
+background:linear-gradient(135deg,#ff4d6d,#7c62de);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.birthDate{
+text-align:center;
+font-size:1.4rem;
+font-weight:bold;
+color:#7c62de;
+margin-top:10px;
+}
+
+.sweet-year{
+display:inline-block;
+margin:15px auto;
+padding:7px 22px;
+background:#fff0f5;
+border-radius:40px;
+font-weight:bold;
+color:#d94d7c;
+}
+
+.golden-wrapper{
+display:flex;
+justify-content:center;
+margin:10px 0;
+}
+
+.golden-number{
+font-size:6rem;
+font-weight:900;
+color:#d4af37;
+background:linear-gradient(135deg,#ffe9a9,#ffd26a);
+padding:10px 50px;
+border-radius:80px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+text-shadow:3px 3px 0 #b8860b;
+}
+
+.exam-text{
+text-align:center;
+font-weight:bold;
+color:#c04f78;
+margin-top:10px;
+}
+
+.card{
+background:white;
+max-width:650px;
+margin:25px auto;
+padding:30px;
+border-radius:25px;
+border:2px dashed #ffd4df;
+}
+
+.message{
+font-size:1.15rem;
+line-height:2.2;
+text-align:center;
+font-weight:700;
+color:#444;
+white-space:pre-wrap;
+}
+
+.nextPageButton,
+.gameButton,
+.restart-game-btn{
+display:block;
+margin:25px auto;
+padding:14px 35px;
+border:none;
+border-radius:50px;
+font-size:1.2rem;
+font-family:"Cairo",sans-serif;
+font-weight:bold;
+cursor:pointer;
+color:white;
+transition:.3s;
+}
+
+.nextPageButton,
+.gameButton{
+background:linear-gradient(135deg,#7c62de,#a88bff);
+}
+
+.restart-game-btn{
+background:linear-gradient(135deg,#ff4d6d,#ff758f);
+}
+
+.nextPageButton:hover,
+.gameButton:hover,
+.restart-game-btn:hover{
+transform:scale(1.05);
+}
+
+/* التوقيع */
+
+.signature{
+margin-top:25px;
+padding-top:20px;
+border-top:2px dashed #ffc5d3;
+text-align:center;
+}
+
+.signature-item{
+font-size:1.5rem;
+font-family:"Great Vibes",cursive;
+margin:10px 0;
+}
+
+/* اللعبة */
+
+.game-container{
+max-width:700px;
+margin:20px auto;
+background:white;
+border-radius:35px;
+padding:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+border:2px solid #ffd2df;
+}
+
+.game-title{
+font-size:2.3rem;
+font-weight:900;
+text-align:center;
+color:#ff4d6d;
+}
+
+.game-subtitle{
+text-align:center;
+margin-top:10px;
+font-size:1.2rem;
+font-weight:bold;
+color:#7c62de;
+}
+
+.slider{
+width:100%;
+margin-top:35px;
+height:12px;
+border-radius:10px;
+appearance:none;
+background:linear-gradient(90deg,#ff4d6d,#7c62de,#ffd166);
+}
+
+.slider::-webkit-slider-thumb{
+appearance:none;
+width:30px;
+height:30px;
+border-radius:50%;
+background:#ff4d6d;
+border:3px solid white;
+cursor:pointer;
+}
+
+.percentage-value{
+text-align:center;
+font-size:3rem;
+font-weight:900;
+margin-top:25px;
+color:#d4af37;
+}
+
+.message-box{
+background:#fff0f5;
+padding:25px;
+border-radius:30px;
+margin-top:20px;
+border:2px dashed #ffbfd0;
+min-height:120px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.game-message{
+font-size:1.2rem;
+font-weight:bold;
+text-align:center;
+color:#4a3e7d;
+line-height:1.9;
+}
+
+.footer-credit{
+text-align:center;
+margin-top:20px;
+font-size:.8rem;
+color:#c25c7d;
+}
+
+/* البلالين */
+
+.balloon{
+position:fixed;
+bottom:-120px;
+font-size:3rem;
+z-index:999;
+animation:floatUp linear forwards;
+cursor:pointer;
+}
+
+@keyframes floatUp{
+to{
+transform:translateY(-130vh);
+opacity:0;
+}
+}
+
+.center-message{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:rgba(0,0,0,.85);
+color:#fff;
+padding:12px 25px;
+border-radius:50px;
+font-weight:bold;
+z-index:9999;
+animation:fadeOut 2s forwards;
+}
+
+@keyframes fadeOut{
+0%{
+opacity:1;
+}
+100%{
+opacity:0;
+visibility:hidden;
+}
+}
+</style>
+</head>
+
+<body>
+
+<!-- الصفحة الأولى -->
+
+<section id="welcomePage">
+
+<div class="title">
+اهلا يا مس منوره🌝
+</div>
+
+<button class="cuteButton" id="cuteButton">
+دوسي هنا😂
+</button>
+
+<div id="countdown"></div>
+
+</section>
+
+<!-- الصفحة الثانية -->
+
+<section id="birthdayPage">
+
+<div class="topImageContainer">
+<img
+class="topImage"
+src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=1200&auto=format&fit=crop"
+>
+</div>
+
+<h1 class="hbHeader">
+🎉 Happy Birthday Ms. Nahla 🎉
+</h1>
+
+<div class="birthDate">
+🎂 25 / 5 🎂
+</div>
+
+<div style="text-align:center;">
+<span class="sweet-year">
+💗✨ سنة حلوه يا جميل
+</span>
+</div>
+
+<div class="golden-wrapper">
+<div class="golden-number">
+27
+</div>
+</div>
+
+<div class="exam-text">
+✨ 27 سنة امتحانات وجدعنه 😂😂 ✨
+</div>
+
+<div class="card">
+<div class="message" id="typingText"></div>
+</div>
+
+<button class="nextPageButton" id="nextPageBtn" style="display:none;">
+دوسه كمان هنا معلش🙃
+</button>
+
+</section>
+
+<!-- صفحة الشكر -->
+
+<section id="thankYouPage">
+
+<h1 class="hbHeader">
+رسالة شكر من القلب ♡
+</h1>
+
+<div class="card">
+
+<div class="message">
+
+حقيقي يا مس نهلة شكراً على كل تعبك ومجهودك الجميل معانا طول السنة 🤍
+
+ربنا يجازيكي كل خير ويفرح قلبك زي ما كنتي دايماً بتفرحينا 🌸🎂
+
+</div>
+
+<div class="signature">
+
+<div class="signature-item">~ بيشوي مخلص</div>
+<div class="signature-item">~ محمد علوان</div>
+<div class="signature-item">~ محمد غلاب</div>
+<div class="signature-item">~ محمد علي</div>
+
+</div>
+
+</div>
+
+<button class="gameButton" id="gameButton">
+🎈 لعبة المفاجأة 🎈
+</button>
+
+</section>
+
+<!-- صفحة اللعبة -->
+
+<section id="gamePage">
+
+<div class="game-container">
+
+<div class="game-title">
+🎈 بتحبي حصتنا قد اي؟؟ 🎈
+</div>
+
+<div class="game-subtitle">
+قولي الصراحه متخافيش 🔪🔪
+</div>
+
+<input type="range" min="1" max="100" value="50" class="slider" id="loveSlider">
+
+<div class="percentage-value" id="percentageDisplay">
+50%
+</div>
+
+<div class="message-box">
+<div class="game-message" id="gameMessage">
+50% حب نص كم ده مينفعش معانا
+</div>
+</div>
+
+<button class="restart-game-btn" id="restartBtn">
+🏠 رجوع للبداية
+</button>
+
+</div>
+
+<div class="footer-credit">
+🤍 صُنع بحب بواسطة Mo.hamed 🤍
+</div>
+
+</section>
+
+<!-- الأصوات -->
+
+<audio id="balloonPopSound">
+<source src="https://assets.mixkit.co/active_storage/sfx/1726/1726-84.wav">
+</audio>
+
+<audio id="bgMusic" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3">
+</audio>
+
+<script>
+
+const messages = {
+50:"50% حب نص كم ده مينفعش معانا 😂",
+60:"60% مش طموحي لا 📉",
+70:"70% اول مره اشوف بخل في المشاعر 🙂",
+80:"80% لا انا كده ازعل 😤",
+90:"90% شايله الباقي لمين؟🔪",
+95:"95% لا احنا كده هنتغر 🥹🤍",
+100:"100% احنا اكتر 🥰♥️"
+};
+
+const welcomePage = document.getElementById("welcomePage");
+const birthdayPage = document.getElementById("birthdayPage");
+const thankYouPage = document.getElementById("thankYouPage");
+const gamePage = document.getElementById("gamePage");
+
+const typingText = document.getElementById("typingText");
+
+document.getElementById("cuteButton").addEventListener("click",startCountdown);
+
+function startCountdown(){
+
+document.getElementById("cuteButton").style.display="none";
+
+let count=3;
+
+const countdown=document.getElementById("countdown");
+
+countdown.innerHTML=count;
+
+const interval=setInterval(()=>{
+
+count--;
+
+if(count>0){
+
+countdown.innerHTML=count;
+
+}else{
+
+clearInterval(interval);
+
+welcomePage.style.display="none";
+birthdayPage.style.display="block";
+
+launchFireworks();
+spawnBalloons(15);
+
+const music=document.getElementById("bgMusic");
+music.play().catch(()=>{});
+
+typeMessage();
+
+}
+
+},1000);
+
+}
+
+function typeMessage(){
+
+const text="كل عام وأنتِ طيبة يا مس نهلة 🌸🎂 نتمنى لكِ سنة جميلة مليانة راحة وسعادة ونجاح وتحقيق لكل أحلامك 🤍";
+
+let i=0;
+
+function typing(){
+
+if(i<text.length){
+
+typingText.innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typing,45);
+
+}else{
+
+document.getElementById("nextPageBtn").style.display="block";
+
+}
+
+}
+
+typing();
+
+}
+
+document.getElementById("nextPageBtn").addEventListener("click",()=>{
+
+birthdayPage.style.display="none";
+thankYouPage.style.display="block";
+
+launchFireworks();
+spawnBalloons(10);
+
+});
+
+document.getElementById("gameButton").addEventListener("click",()=>{
+
+thankYouPage.style.display="none";
+gamePage.style.display="block";
+
+});
+
+const slider=document.getElementById("loveSlider");
+
+slider.addEventListener("input",(e)=>{
+
+const val=parseInt(e.target.value);
+
+document.getElementById("percentageDisplay").innerHTML=val+"%";
+
+if(messages[val]){
+
+document.getElementById("gameMessage").innerHTML=messages[val];
+
+}else if(val<50){
+
+document.getElementById("gameMessage").innerHTML="😅 لسه بدري اوي";
+
+}else if(val<80){
+
+document.getElementById("gameMessage").innerHTML="🙂 محتاجين تقدير اكتر";
+
+}else{
+
+document.getElementById("gameMessage").innerHTML="🥹 قربنا نرضى";
+
+}
+
+if(val>=90){
+
+launchFireworks();
+
+}
+
+if(val==100){
+
+spawnBalloons(20);
+
+showCenterMessage("💯 ياااه 100% 💯");
+
+}
+
+});
+
+document.getElementById("restartBtn").addEventListener("click",()=>{
+
+location.reload();
+
+});
+
+function launchFireworks(){
+
+confetti({
+particleCount:150,
+spread:100,
+origin:{y:0.6}
+});
+
+}
+
+function spawnBalloons(count){
+
+const emojis=["🎈","🎉","🎊","💕"];
+
+for(let i=0;i<count;i++){
+
+const balloon=document.createElement("div");
+
+balloon.classList.add("balloon");
+
+balloon.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+balloon.style.left=Math.random()*100+"vw";
+
+balloon.style.animationDuration=(5+Math.random()*5)+"s";
+
+balloon.style.fontSize=(2+Math.random()*2)+"rem";
+
+balloon.addEventListener("click",()=>{
+
+document.getElementById("balloonPopSound").play();
+
+confetti({
+particleCount:50,
+spread:70,
+origin:{x:Math.random(),y:0.7}
+});
+
+balloon.remove();
+
+});
+
+document.body.appendChild(balloon);
+
+setTimeout(()=>{
+balloon.remove();
+},12000);
+
+}
+
+}
+
+function showCenterMessage(text){
+
+const msg=document.createElement("div");
+
+msg.className="center-message";
+
+msg.innerHTML=text;
+
+document.body.appendChild(msg);
+
+setTimeout(()=>{
+msg.remove();
+},2000);
+
+}
+
+</script>
+
+</body>
+</html>
+    .center-message { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.85); color: #fff9c4; font-size: 1.2rem; font-weight: bold; padding: 10px 24px; border-radius: 50px; text-align: center; z-index: 2000; font-family:  Cairo , sans-serif; white-space: nowrap; backdrop-filter: blur(6px); pointer-events: none; animation: fadeOutFast 2s forwards; }
         @keyframes fadeOutFast { 0% { opacity: 1; transform: translate(-50%, -50%) scale(0.9); } 20% { transform: translate(-50%, -50%) scale(1.05); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); visibility: hidden; } }
         .footer-credit { text-align: center; margin-top: 30px; padding: 15px; font-size: 0.75rem; color: #b34e71; border-top: 1px dashed #ffb7c5; max-width: 650px; margin-left: auto; margin-right: auto; }
     </style>
