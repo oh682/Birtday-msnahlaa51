@@ -1,80 +1,491 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>عيد ميلاد سعيد مس نهلة 🎂✨</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>عيد ميلاد سعيد مس نهلة 🎂✨ رسائل من القلب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Cairo", sans-serif; background: linear-gradient(180deg, #fff0f5, #f3ebff); overflow-x: hidden; background-size: 400% 400%; animation: bgMove 12s ease infinite; }
+        @keyframes bgMove { 0% { background-position: left top; } 50% { background-position: right bottom; } 100% { background-position: left top; } }
+        
+        #welcomePage { height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; background: linear-gradient(135deg, #ffccd5, #d8ccff); gap: 40px; }
+        .title { font-size: 3rem; color: #4a3e7d; font-weight: 900; text-align: center; padding: 0 20px; }
+        .cuteButton { padding: 18px 50px; font-size: 1.7rem; font-family:  Tajawal ,  Cairo , sans-serif; font-weight: 800; color: white; border: none; border-radius: 60px; cursor: pointer; background: linear-gradient(135deg, #ff4d6d, #ff758f); box-shadow: 0 10px 30px rgba(255,77,109,.35); transition: 0.35s; }
+        .cuteButton:hover { transform: scale(1.05); }
+        #countdown { font-size: 5rem; font-weight: 900; color: white; text-shadow: 0 4px 12px rgba(0,0,0,0.2); background: rgba(0,0,0,0.2); padding: 15px 30px; border-radius: 70px; min-width: 150px; text-align: center; }
+        
+        #birthdayPage, #thankYouPage, #gamePage { display: none; padding: 20px; animation: fadeIn 1.2s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .topImageContainer { max-width: 650px; margin: auto; border-radius: 25px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.1); }
+        .topImage { width: 100%; height: 300px; object-fit: cover; }
+        .hbHeader { text-align: center; font-size: 2.5rem; margin-top: 25px; background: linear-gradient(120deg, #ff4d6d, #7c62de); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; }
+        .birthDate { text-align: center; font-size: 1.6rem; font-weight: bold; margin-bottom: 5px; color: #7c62de; }
+        .sweet-year { text-align: center; font-size: 1.2rem; font-weight: 700; color: #e85d8a; background: #fff0f5; display: inline-block; padding: 5px 20px; border-radius: 40px; margin: 0 auto 15px; width: fit-content; }
+        .golden-wrapper { display: flex; justify-content: center; margin: 15px auto 5px auto; }
+        .golden-number { font-size: 6rem; font-weight: 900; color: #d4af37; text-shadow: 4px 4px 0 #b8860b, 8px 8px 0 rgba(0,0,0,0.1); background: linear-gradient(135deg, #f9e6b3, #ffde9c); display: inline-block; padding: 10px 45px; border-radius: 80px; letter-spacing: 8px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); border: 3px solid #ffbf00; border-left: 8px solid #ffaa33; border-right: 8px solid #ffaa33; }
+        .exam-text { text-align: center; font-size: 0.9rem; font-weight: 800; color: #b34e71; background: #fff4f9; display: inline-block; padding: 4px 15px; border-radius: 40px; margin: 0 auto 20px auto; width: fit-content; }
+        .card { background: white; max-width: 650px; margin: 15px auto; padding: 30px; border-radius: 25px; border: 2px dashed #ffe0eb; }
+        .message { font-size: 1.15rem; line-height: 2.2; text-align: center; color: #444; font-weight: 700; white-space: pre-wrap; }
+        
+        /* Carousel Styles */
+        .carousel-section {
+            max-width: 550px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        .carousel-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+        }
+        .carousel-arrow {
+            background: linear-gradient(135deg, #ff4d6d, #ff758f);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255,77,109,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-arrow:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #ff1f4a, #ff4d6d);
+        }
+        .carousel-card {
+            background: linear-gradient(145deg, #ffffff, #fff5f8);
+            border-radius: 50px;
+            padding: 40px 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 2px solid rgba(255, 183, 197, 0.6);
+            position: relative;
+            min-width: 280px;
+            max-width: 350px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .carousel-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 50px rgba(255, 77, 109, 0.25);
+            border-color: #ffb7c5;
+        }
+        .card-avatar {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            background: linear-gradient(135deg, #ffe4ec, #ffecf0);
+            width: 100px;
+            height: 100px;
+            line-height: 105px;
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .carousel-card:hover .card-avatar {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #ffd6e0, #ffe0e8);
+        }
+        .card-name {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #d43f6b;
+            margin: 15px 0 10px;
+            letter-spacing: 0.5px;
+        }
+        .click-hint {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #ff9eb5;
+            font-weight: 700;
+            opacity: 0.8;
+        }
+        .carousel-counter {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #7c62de;
+            background: rgba(255,255,255,0.8);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 40px;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .nextPageButton, .gameButton { display: none; margin: 25px auto; padding: 14px 35px; font-size: 1.3rem; color: white; background: linear-gradient(135deg, #7c62de, #9a7df6); border: none; border-radius: 50px; cursor: pointer; font-family:  Cairo , sans-serif; font-weight: bold; }
+        .gameButton { display: block; width: fit-content; font-size: 2rem; background: linear-gradient(135deg, #ff4d6d, #ff758f); padding: 12px 35px; }
+        .gameButton:hover { transform: scale(1.05); }
+        .restart-game-btn { background: linear-gradient(135deg, #ff4d6d, #ff758f); border: none; font-size: 1.2rem; padding: 10px 25px; border-radius: 40px; cursor: pointer; font-family:  Cairo , sans-serif; font-weight: bold; color: white; display: block; width: fit-content; margin: 20px auto 0; }
+        .game-container { max-width: 700px; margin: 30px auto; background: white; border-radius: 40px; padding: 35px 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); text-align: center; border: 2px solid #ffb7c5; }
+        .game-title { font-size: 2rem; font-weight: 900; color: #ff4d6d; }
+        .slider { width: 100%; height: 12px; margin: 30px 0; -webkit-appearance: none; background: linear-gradient(90deg, #ff4d6d, #7c62de, #ffde9c); border-radius: 12px; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; background: #ff4d6d; border-radius: 50%; cursor: pointer; border: 3px solid white; }
+        .percentage-value { font-size: 3rem; font-weight: 900; color: #d4af37; }
+        .message-box { background: #fff0f5; border-radius: 30px; padding: 25px; margin-top: 25px; }
+        .game-message { font-size: 1.25rem; font-weight: 700; color: #4a3e7d; line-height: 1.8; }
+        
+        .balloon { position: fixed; bottom: -120px; font-size: 3rem; cursor: pointer; animation: floatUp linear forwards; z-index: 999; }
+        @keyframes floatUp { to { transform: translateY(-130vh) translateX(40px); opacity: 0; } }
+        .center-message { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.85); color: #fff9c4; padding: 10px 24px; border-radius: 50px; z-index: 2000; white-space: nowrap; animation: fadeOutFast 2s forwards; pointer-events: none; font-weight: bold; }
+        @keyframes fadeOutFast { 0% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+        
+        .modal-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.75);
+            backdrop-filter: blur(5px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.2s ease;
+        }
+        .modal-message.active { visibility: visible; opacity: 1; }
+        .modal-content {
+            background: #fffcf8;
+            max-width: 550px;
+            width: 90%;
+            border-radius: 60px;
+            padding: 35px 28px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 35px 55px rgba(0,0,0,0.3);
+            border: 3px solid #ffb7c5;
+            animation: modalPop 0.35s cubic-bezier(0.34,1.2,0.64,1);
+        }
+        @keyframes modalPop { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-name { font-size: 2rem; font-weight: 900; background: linear-gradient(135deg, #ff4d6d, #c65bc9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
+        .modal-message-text { font-size: 1.1rem; line-height: 1.9; color: #2d2f50; font-weight: 500; padding: 15px 0; white-space: pre-wrap; border-top: 2px dashed #ffe0eb; border-bottom: 2px dashed #ffe0eb; max-height: 60vh; overflow-y: auto; }
+        .close-modal { background: #ff4d6d; border: none; color: white; font-size: 1.2rem; font-weight: bold; padding: 10px 28px; border-radius: 40px; margin-top: 20px; cursor: pointer; font-family:  Cairo , sans-serif; transition: 0.2s; }
+        
+        @media (max-width: 550px) {
+            .carousel-arrow { width: 40px; height: 40px; font-size: 1.4rem; }
+            .carousel-card { padding: 30px 15px; min-width: 220px; }
+            .card-avatar { width: 80px; height: 80px; line-height: 85px; font-size: 3rem; }
+            .card-name { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <section id="welcomePage">
+        <div class="title">اهلا يا مس منوره🌝</div>
+        <button class="cuteButton" id="cuteButton">دوسي هنا😂</button>
+        <div id="countdown"></div>
+    </section>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <section id="birthdayPage">
+        <div class="topImageContainer"><img class="topImage" src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=1200&auto=format&fit=crop" alt="عيد ميلاد"></div>
+        <h1 class="hbHeader">🎉 Happy Birthday Ms. Nahla 🎉</h1>
+        <div class="birthDate">🎂 25 / 5 🎂</div>
+        <div style="text-align: center;"><span class="sweet-year">🌸 سنة حلوه يا جميـل 🌸</span></div>
+        <div class="golden-wrapper"><div class="golden-number">26</div></div>
+        <div class="exam-text">✨ 26 سنة امتحانات وجدعنه 😂😂 ✨</div>
+        <div class="card"><div class="message" id="typingText"></div></div>
+        <button class="nextPageButton" id="nextPageBtn">دوسه كمان هنا معلش🙃</button>
+    </section>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <section id="thankYouPage">
+        <div class="carousel-section">
+            <div class="carousel-container">
+                <button class="carousel-arrow" id="prevCard">◀</button>
+                <div id="carouselCard" class="carousel-card">
+                    <div class="card-avatar" id="currentEmoji">📖✨</div>
+                    <div class="card-name" id="currentName">محمد عبد الحميد</div>
+                    <div class="click-hint">💌 اضغط هنا لقراءة الرسالة 💌</div>
+                </div>
+                <button class="carousel-arrow" id="nextCard">▶</button>
+            </div>
+            <div class="carousel-counter" id="cardCounter">1 من 14</div>
+        </div>
+        <button class="gameButton" id="gameButton">↫</button>
+    </section>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+    <section id="gamePage">
+        <div class="game-container">
+            <div class="game-title">🎈 بتحبينا قد إي؟ 🎈</div>
+            <div class="game-subtitle">قولي الصراحه متخافيش 🔪🔪</div>
+            <div class="slider-container">
+                <input type="range" min="1" max="100" value="50" class="slider" id="loveSlider">
+                <div class="slider-markers" style="display: flex; justify-content: space-between; padding: 0 10px; margin-top: -20px; margin-bottom: 20px;">
+                    <span class="marker" style="font-size:0.8rem; font-weight:bold; color:#7c62de; background:white; padding:2px 8px; border-radius:20px;">1</span>
+                    <span class="marker" style="font-size:0.8rem; font-weight:bold; color:#7c62de; background:white; padding:2px 8px; border-radius:20px;">50</span>
+                    <span class="marker" style="font-size:0.8rem; font-weight:bold; color:#7c62de; background:white; padding:2px 8px; border-radius:20px;">100</span>
+                </div>
+                <div class="percentage-value" id="percentageDisplay">50%</div>
+            </div>
+            <div class="message-box"><div class="game-message" id="gameMessage">اسحب الشريط عشان تعرفي...</div></div>
+            <button class="restart-game-btn" id="restartFromGameBtn">🏠 رجوع للبداية</button>
+        </div>
+    </section>
 
-body{
-font-family:"Cairo",sans-serif;
-background:linear-gradient(180deg,#fff0f5,#efe6ff);
-overflow-x:hidden;
-min-height:100vh;
-background-size:400% 400%;
-animation:bgMove 10s ease infinite;
-}
+    <audio id="bgMusic" loop preload="auto"><source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mpeg"></audio>
 
-@keyframes bgMove{
-0%{background-position:left top;}
-50%{background-position:right bottom;}
-100%{background-position:left top;}
-}
+    <div id="messageModal" class="modal-message">
+        <div class="modal-content">
+            <div class="modal-name" id="modalName"></div>
+            <div class="modal-message-text" id="modalMessageText"></div>
+            <button class="close-modal" id="closeModalBtn">💕 غلق 💕</button>
+        </div>
+    </div>
 
-section{
-padding:20px;
-display:none;
-animation:fade .8s ease;
-}
+    <script>
+        // جميع الكروت (14)
+        const allCardsData = [
+            { name: "محمد عبد الحميد", message: "حقيقي يا مس مفيش كلام يوفي تعبك ومجهودك الجميل معانا طول السنة.. حضرتك مش مجرد مدرسة شاطرة وخلاص، حضرتك كنتِ دايماً بتسيبي أثر طيب وعظيم في عقولنا وقلوبنا!\n\nشكراً على صبرك وعلى كل طاقة إيجابية وضحكة حلوة كنتِ بتديهالنا وقت تعبنا.. ربنا يجعل كل مجهودك في ميزان حسناتك 🤍🤍", emoji: "📖✨" },
+            { name: "بيشوي مخلص", message: "كل سنة وانتى طيبة يا مس و عقبال مليون سنة 🫂💯 ويارب تحققى كل اللى بتتمنيه🤲🏻 لانك تستاهلى كل حاجة حلوة 🥰 عشان انتى مش بس بتعلمينا فى الدراسة بس انتى علمتينا كتير اوى برا الدراسة علمتينا حاجات حلوة كتير و كانت نصايحك كنز دايما وكنتى بتوقفى معانا و تسندينا👬 لما بنقع نفسيا كتير صح زعلناكى كتير😅 بس انتى بالنسبالى اكتر من مدرس درسلى مادة ويشهد عليا ربنا فى اللى هقولو انتى بالنسبالى اكتر من مدرس بكتيييييير قوى 🥰🫂 ربنا يخليكى لينا و تفضلى علطول سند لينا وقت ما نحتاجك و انا عمرى ما هنساكى يا شيخة دا انتى خلتينى عايز اخش علوم عشان انتى دخلتيها 😂🫂 كل سنة و انتى طيبة و عقبال 100 سنة سعيدة ❤️😍🫂", emoji: "🫂💯" },
+            { name: "محمد علوان", message: "كل سنة وانتي طيبة يا مس، وعقبال سنين كتير مليانة نجاح وسعادة. بجد شكراً على مجهودك معانا ووقفتك جنبنا، ودايماً بتعلمينا حاجات مش بس دراسة لا، ده كمان دروس في الحياة. بتمنى لك سنة جميلة زيك، ومتحققة فيها كل الحاجات اللي بتتمنيها، وتفضلي دايماً مصدر إلهام لينا.", emoji: "🌟💪" },
+            { name: "حبيبه عبد الباسط", message: "كل سنة وحضرتك طيبة يا أجمل مُس 🎉\nعيد ميلادك فرصة أقولك شكراً على تعبك معانا، وعلى صبرك، وعلى كل معلومة وصلتيها لينا ببساطة وحب.\nمجهودك معانا مش بيروح هدر، وبتسيبي أثر في كل واحد فينا.\nربنا يديكي الصحة ويفرح قلبك زي ما بتفرحينا، وتفضلي منورة حياتنا بعلمك وذوقك ❤️\n\nكل سنة وانتي طيبة يا مُس ❤️\nشكراً على مجهودك معانا وعلى قلبك الكبير ربنا يجازيكي كل خير ويخليكي لينا.", emoji: "🌸📚" },
+            { name: "منار", message: "مس نهلة بجد محظوظين جداً إننا اتعلمنا على إيدك شكراً ليكي على صبرك، ورقتك، وعلى المعاملة الراقية اللي عمرنا ما هننساها بجد كنتِ قدوة لينا في الأخلاق قبل العلم. شكراً على كل حاجة. 💗", emoji: "💗🌟" },
+            { name: "ندى عادل", message: "مس نهلة بجد انا اللي دايما تعباكي ومطلعه عينك بجد لكن برضو مستحملاني معرفش ازاي😂💗\nشكرا ي مس ع كل حاجه عملتيها علشانا تعبتي قوي معانا وبتشرحي اكتر من مره بجد انتي ليكي معزه خاصه ف حياتنا كلنا دايما بتتعاملي معانا ك اخواتك مش الطلبه بتاعتك نصايحك لينا دايما طبعا اكتر دفعه مطلعه عينك بس يلا اهو هنمشي ونسيب المكان للدفعه الجايه 😂💗\nهنفتقدك اوي ي مس بجد 🥹♥️\nكل سنه وانتي طيبه ي مس 💗\nكل سنه وانتي احلي واشطر مس اصلا 💗\nيارب السنين كلها سعاده وهنا يارب 💗\nوربنا يجبر بخاطرك يارب ونشوفك دايما مبسوطه ف حياتك يارب ومنشوفش فيكي اي حاجه وحشه ان شاءلله 🥹💗\nشكرا ع كل حاجه بجد💗💗💗", emoji: "😂💕" },
+            { name: "فاطمه ياسر", message: "كل عام وأنتِ منبع التفاؤل والجمال يا مسّي الغالية، عيد ميلاد سعيد لقلبكِ الأبيض.\nيا من تزرعين الفرح والأمل في قلوبنا دائماً، أتمنى لكِ عاماً سعيداً يشبه طيبة قلبكِ.\nعيد ميلاد سعيد لأرق وأجمل مس، شكراً لأنكِ لستِ معلمة فقط، بل أماً وأختاً كبرى لنا.\nمسّي الحبيبة، كل عام والابتسامة لا تفارق وجهكِ، والبهجة لا تغادر حياتكِ.\nفي يوم ميلادكِ، أود أن أشكركِ من أعماق قلبي على كل معلومة، ونصيحة، ووقت منحتيه لنا.\nكل عام وأنتِ قدوتنا الجميلة، شكراً لجهدكِ وصبركِ اللامتناهي معنا، وعيد ميلاد سعيد.\nإلى المعلمة المتميزة التي تضيء دروبنا بالعلم، عامكِ الجديد مليء بالنجاح والتوفيق بإذن الله.\nعيد ميلاد سعيد يا مس، ممتنة جداً لكل لحظة تركتِ فيها بصمة إيجابية في حياتي ودراستي.\nكل عام وأنتِ بألف خير يا مس، أدعو الله أن يرزقكِ الصحة والعافية وراحة البال في عامكِ الجديد.\nعيد ميلاد سعيد لمعلمتي الفاضلة، تمنياتي لكِ بعمر مديد مكلل بالسعادة والرضا والنجاح المستمر.\nيا رب يجعل عامكِ الجديد بداية لأيام أجمل، ويحقق لكِ فيه كل ما تتمنيه، كل سنة وأنتِ طيبة.", emoji: "🌷💐" },
+            { name: "شهد", message: "بصي والله انا مش عارفي اكتب ايه بجد مش لاقيه كلام يوصف جمالك وجمال معاملتك وجمال شرحك اجمل مس واجمل اخت تتحبي من غير كلام حد يدخل القلب بكل سهوله بجد ربي يسلم الي رباكي ويغفرله ويجعلك سبب في المغفرة ليه يارب 🤲 اجمل من يتم من عمره سنة ربي يجلع كل سنين عمرك راحة بال وسعادة ويجعل سنين عمرك الي جاية كلها جبر وتحقيقي كل احلامك يارب ♥ واستودع الله عام من عمرك مضى واتمنى ان يجعل الله عامك القادم افضل واجمل من ما تتمني بجد هتوحشيني انت اجمل مس انا اتعملت معاها ربي يجعلك دايما من المتميزين يارب🤲♥", emoji: "💕🤲" },
+            { name: "محمد عبد الوهاب", message: "كل سنة وانتي طيبة يا مس والله عشنا معاكي ايام والله ما تنسا وعقبال ميت سنة سعيده عليكي يارب", emoji: "🎤❤️" },
+            { name: "هاجر عبد المنصف", message: "هابي بيرثداي لألطف مس في التاريخ 🌚❣️❣️❣️\nاللي كانت بتدخل الحصه وإحنا مكتئبين نطلع منها بنضحك 🌚❣️❣️❣️❣️\nربنا يديم ضحكتك وكرمك وطيبة قلبك،\nوكل سنه وانتي ناجحه ومبسوطه وبخير دايمًا 🌚❣️❣️❣️❣️", emoji: "🌚❣️" },
+            { name: "محمد علي", message: "في يوم 25 من شهر 5 سنة 2000 الدنيا نورت علما وحبا بميلادك يا ميس وبنحبك جدا وهتوحشينا والله يا أجمل واحلى ميس", emoji: "🌟🎂" },
+            { name: "إيناس صلاح", message: "الي مثلي الأعلى \nمعلمتي الرائعة، في يوم ميلادك السعيد حابة أقولك إنك مش مجرد معلمة بتشرح مادة علمية، أنتِ بجد شخصية مؤثرة جداً في حياتي، ووجودك في مرحلتي الدراسية دي صنع فارق كبير في شخصيتي وفي طريقتي للتفكير. \nأنتِ بالنسبة لي الـ Role model اللي بتعلم منها كل يوم، وبشوف فيكي دايماً السيدة الـ Independent الناجحة والقوية اللي بتلهمني أكون زيها في المستقبل. حضورك المميز وطاقتك الإيجابية في الحصة هما الـ Source of energy والشغف اللي بيخليني أدخل الدرس وأنا حابة أتعلم وأتفوق. \nأنتِ بجد Inspirational في كل حاجة بتعمليها، وطريقتك في تبسيط أصعب التفاصيل بتثبت دايماً إنك معلمة استثنائية ومشتركة في بناء مستقبلنا بحب حقيقي. شكراً على صبرك، وعلى ابتسامتك اللي بتفصلنا عن أي ضغط دراسي، وشكراً لأنك بتسمعيني وبتدعميني دايماً. \nمن كل قلبي بتمنالك عيد ميلاد سعيد وعام مليان بالتألق والنجاح المستمر والصحة، وتفضلي دايماً القوة والنور اللي بينور طريقنا.\nكل عام وأنتِ بألف خير يا أحلى مس نهلة! ✨\nWith all my love and respect,\nYour outstanding student: Inas Salah 🤍🌼.", emoji: "✨🤍" },
+            { name: "آيه حماده", message: "كل سنه وحضرتك طيبه يمس ♥️♥️♥️♥️♥️♥️♥️🥹. \nوسنه سعيده عليكي يمس♥️. \nوكل سنه وانتي وسطينا ومعانا 🥹♥️. \nأجمل حد يتم 26 كدا كدا ♥️🥹. \nعام الهنا علي قلبك ♥️🫂.", emoji: "♥️🥹" },
+            { name: "مريم عادل", message: "احلي مس واحلي نهوله تكبر سنه كدا كدا🥹💗🫶🏼✨\nكنتي دايما الأخت لينا والصديقه وكنتي دايما قريبه منينا وبتشجعينا وانتي تعبتي معانا كتير قوي واحنا مطلعين عينك 🥺😅💗✨\nكل سنه وانتي طيبه ي احلي نهوله في الدنيا ويارب تكون سنه سعيدة عليكي وتبقي ناجحه ف حياتك كمان وكمان وتكوني مع الناس اللي بيحبوكي 🥺🥺💗💗\nعام الهنا عليكي يارب 🫶🏼✨💗\nوربنا يخليكي لينا يحبيبتي ✨💗🫶🏼🥺", emoji: "💗✨" }
+        ];
 
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(25px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
+        const gameMessages = {
+            1: "لا التاني هتلاقي جنبو 00 مش ده", 2: "2% هذا لا يليق 🙄", 3: "3% ده نازل عليه خصم ولا اي الرقم ده", 4: "4% مكنتش العشم 💔", 5: "5% مش لاعـب", 6: "6% خليهوملك مش بنشحت احنا 🙃", 7: "7% ده حب ده ولا كحول ولا ايي", 8: "8% اي الرقم ده اصلا 😳", 9: "9% مش كفايه لا 😤", 10: "10% نو كومنت 🤐", 11: "11% جربي تاني 🙂🙂", 12: "12% وربنا ما حصل 😒", 13: "13% لا حبينا شويه كمان 🥲", 14: "14% زوديهم شويه 📈", 15: "15% هذا الرقم غير متاح 🦦🦦", 16: "16% بتحبينا اوي كده لي 🥹", 17: "17% لا خدي فرصه تاني", 18: "18% ده مش حب كده دي شفقه", 19: "19% قاسي قاسي قاسي وجرح احساسي 💔🎵", 20: "20% ماشي ماشي 😑", 21: "21% الكدب حرام", 22: "22% قولي الصراحه متخافيش 🔪🔪", 23: "23% Its not fair 😭", 24: "24% يا مسهل الحال يرب", 25: "25% قليل أوي بصراحة 😕", 26: "26% عيب والله", 27: "27% طب ارفعيها حبه كمان ⬆️", 28: "28% احنا نستاهل أكتر 👑", 29: "29% متهزريش معايا", 30: "30% لا خدي فرصه كمان 🔄", 31: "31% هذا الرقم غير متاح 📵", 32: "32% كده داخلين دور تاني", 33: "33% وكان مفروووض محبكشي..ولو حبيييت مبينشي 🎤", 34: "34% الدنيا لسا بخير، الصبر اخرتو خير 😶", 35: "35% لسا مش كفايه 😒", 36: "36% انت قلبك قاسي اوي اوي.. انت مش بتحس كده وكده", 37: "37% طيب شكرا 🙄", 38: "38% طب الحمد لله 🤲", 39: "39% دي درجة الحراره اعلي 🌡️", 40: "40% هش", 41: "41% هش تاني", 42: "42% حب اقتصادي", 43: "43% يوجع القلب 💔", 44: "44% واضح إننا مقبولين بالعافية 😅", 45: "45% هعمل مش واخد بالي 👀", 46: "46% انا تعباااااااااان", 47: "47% لسه بدري أوي", 48: "48% نو مشاعر", 49: "49% ده مش حب دي شفقه 😢", 50: "50% حب نص كم ده مينفعش معانا", 51: "51% تاني تاني 🔁", 52: "52% هذا الرقم غير متاح 📵", 53: "53% ممكن تزوديها شويه 🥺", 54: "54% طب ماشي 😑", 55: "55% يا مسهل 🙏", 56: "56% لا احنا نستاهل أكتر ✨", 57: "57% لا 🥱", 58: "58% انا ماشي 🚶‍♂️", 59: "59% خدي فرصه تاني 🔄", 60: "60% مش طموحي لا 📉", 61: "61% أي كلام والسلام 🤷", 62: "62% نعم🙂", 63: "63% بس كده ؟ 😏", 64: "64% هو انا مبجيش علي بالك.. ولا كلامي بيحلالك 😭", 65: "65% 🤡🤡", 66: "66% ماشي ماشي ماشي ماشي 😑😑", 67: "67% لي خليتنا نحلم والامل لمع عيونا 😏", 68: "68% يا مسهل", 69: "69% اهانه دي خدي بالك ⚠️", 70: "70% اول مره اشوف بخل في المشاعر 🙂", 71: "71% انا ك محمد مينفعنيش الشغل ده 🥲", 72: "72% مبحبش الرقم ده 🚫", 73: "73% تنسيق كلية الحقوق، اه عارفينو", 74: "74% عيب والله 😒", 75: "75% يبوي قولي الصراحه 🥺", 76: "76% عذرا هذا الرقم غير متاح حاليا 📵", 77: "77% الرقم ده كخه", 78: "78% كده نفرح ولا نزعل ولا نعمل ايي 😵‍💫", 79: "79% طمعانين في كرم اكتر 🙃🙃", 80: "80% لا انا كده ازعل 😤", 81: "81% غريبه الناس غريبه الدنيا ديا، اعز الناس بيتغير عليا 🎵", 82: "82% هاتي كمان 🦦", 83: "83% حررام 😭", 84: "84% اقل من 200% مش عايزين 💯💯", 85: "85% ياااه ع السنين المسروقين في هواه ❤️‍🩹❤️‍🩹", 86: "86% لا اكتر ⬆️", 87: "87% لا زودي 📈", 88: "88% زودي 📈📈", 89: "89% انا ماشي 🚶‍♂️", 90: "90% شايله الباقي لمين؟🔪", 91: "91% بدأت تندع اهي 🔥", 92: "92% الحب والكنتالوب ♥️😂", 93: "93% وخلاص فاضل تكه تكه تكه 😂", 94: "94% 🥰🥰", 95: "95% لا احنا كده هنتغر 🥹🥹🤍", 96: "96% جاري تفعيل وضع الغرور 😎😎", 97: "97% 😻😻", 98: "98% انتي اللي ف القلب والباقي ابن كلب ❤️", 99: "99% زقه كمان 🚀", 100: "100% احنا اڪتر 🥰♥️♥️"
+        };
+        function getGameMessage(p) { return gameMessages[p] || `💖 ${p}% 💖`; }
 
-/* الصفحة الأولى */
-
-#welcomePage{
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-height:100vh;
-gap:35px;
-background:linear-gradient(135deg,#ffd4dd,#dccdff);
-position:relative;
-overflow:hidden;
-}
-
-.title{
-font-size:3rem;
-font-weight:900;
-text-align:center;
-padding:0 20px;
-color:#49397f;
-}
-
-.cuteButton{
-padding:18px 50px;
-border:none;
-border-radius:60px;
-font-size:1.6rem;
+        let currentIndex = 0;
+        
+        function updateCarousel() {
+            const card = allCardsData[currentIndex];
+            document.getElementById( currentEmoji ).innerText = card.emoji;
+            document.getElementById( currentName ).innerText = card.name;
+            document.getElementById( cardCounter ).innerText = `${currentIndex + 1} من ${allCardsData.length}`;
+        }
+        
+        function showMessageModal(name, msg) { 
+            document.getElementById("modalName").innerText = name; 
+            document.getElementById("modalMessageText").innerText = msg; 
+            document.getElementById("messageModal").classList.add("active"); 
+            spawnBalloons(5);
+            canvasConfetti({ particleCount: 80, spread: 55, origin: { y: 0.6 }, colors: [ #ff4d6d ,  #ffb3c6 ,  #c77dff ] });
+        }
+        
+        function showCenterMessage(msg) { let d=document.createElement("div"); d.className="center-message"; d.innerText=msg; document.body.appendChild(d); setTimeout(()=>d.remove(),2200); }
+        
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        function handleTouchStart(e) { touchStartX = e.changedTouches[0].screenX; }
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) { nextCard(); }
+            if (touchEndX > touchStartX + 50) { prevCard(); }
+        }
+        
+        function nextCard() { currentIndex = (currentIndex + 1) % allCardsData.length; updateCarousel(); showCenterMessage(`📖 ${allCardsData[currentIndex].name}`); }
+        function prevCard() { currentIndex = (currentIndex - 1 + allCardsData.length) % allCardsData.length; updateCarousel(); showCenterMessage(`📖 ${allCardsData[currentIndex].name}`); }
+        
+        function startGiftProcess() {
+            const btn = document.getElementById("cuteButton");
+            if(!btn) return;
+            btn.style.display = "none";
+            let count = 3;
+            const cd = document.getElementById("countdown");
+            if(!cd) return;
+            if(window.countdownInterval) clearInterval(window.countdownInterval);
+            cd.innerHTML = "3";
+            window.countdownInterval = setInterval(() => {
+                count--;
+                if(count > 0) {
+                    cd.innerHTML = count;
+                } else {
+                    clearInterval(window.countdownInterval);
+                    cd.innerHTML = "";
+                    document.getElementById("welcomePage").style.display = "none";
+                    document.getElementById("birthdayPage").style.display = "block";
+                    try {
+                        let music = document.getElementById("bgMusic");
+                        if(music) music.play().catch(e => console.log("موسيقى:", e));
+                    } catch(e) {}
+                    launchFireworks(10);
+                    spawnBalloons(15);
+                    if(window.typingTimeout) clearTimeout(window.typingTimeout);
+                    window.typingTimeout = setTimeout(() => startTypingMessage(), 2000);
+                }
+            }, 1000);
+        }
+        
+        let isTypingStarted = false;
+        function startTypingMessage() {
+            if(isTypingStarted) return;
+            isTypingStarted = true;
+            const cont = document.getElementById("typingText");
+            if(!cont) return;
+            cont.innerHTML = "";
+            const full = "كل عام وأنتِ طيبة يا مس نهلة، نتمنى لكِ سنة جديدة جميلة مليئة بالراحة والنجاح والتوفيق في كل خطواتكِ، وأن يحقق الله لكِ كل ما تتمنينه. عيد ميلاد سعيد وعقبال سنين طويلة وأنتِ في كامل صحتكِ وعافيتكِ وتألقكِ الدائم 🌸🎂";
+            let i = 0;
+            function typeC(){ 
+                if(i < full.length){ 
+                    cont.innerHTML += full[i]; 
+                    i++; 
+                    setTimeout(typeC, 45); 
+                } else {
+                    document.getElementById("nextPageBtn").style.display = "block";
+                }
+            }
+            typeC();
+        }
+        
+        function launchFireworks(b=10){ 
+            for(let i=0;i<b;i++) setTimeout(()=>canvasConfetti({particleCount:150,spread:100,origin:{y:0.6,x:Math.random()},colors:[ #ff4d6d , #f9c74f , #90be6d ]}),i*90); 
+            setTimeout(()=>canvasConfetti({particleCount:400,spread:130,origin:{y:0.5}}),250); 
+        }
+        
+        function spawnBalloons(c=10){ 
+            const p=["🎈 Happy Birthday 🎈","كل عام وانتي بخير 💖","🎂 عقبال ١٠٠ سنة","💐 انتي الأمل"]; 
+            for(let i=0;i<c;i++){ 
+                let b=document.createElement("div"); 
+                b.innerText=["🎈","🎉","🎊","💕"][Math.floor(Math.random()*4)]; 
+                b.classList.add("balloon"); 
+                b.style.fontSize=`${2+Math.random()*1.5}rem`; 
+                b.style.left=Math.random()*90+"vw"; 
+                b.style.animationDuration=5+Math.random()*6+"s"; 
+                let phrase=p[Math.floor(Math.random()*p.length)]; 
+                b.setAttribute("data-phrase",phrase); 
+                b.addEventListener("click",(e)=>{ 
+                    e.stopPropagation(); 
+                    showCenterMessage(b.getAttribute("data-phrase")); 
+                    canvasConfetti({particleCount:40,spread:50,origin:{x:parseFloat(b.style.left)/100,y:0.7}}); 
+                    b.remove(); 
+                }); 
+                document.body.appendChild(b); 
+                setTimeout(()=>{ if(b.parentNode) b.remove(); },12000); 
+            } 
+        }
+        
+        function goToThankYouPage(){ 
+            document.getElementById("birthdayPage").style.display = "none"; 
+            document.getElementById("thankYouPage").style.display = "block"; 
+            document.getElementById("gamePage").style.display = "none"; 
+            currentIndex = 0;
+            updateCarousel();
+            window.scrollTo({top:0,behavior:"smooth"}); 
+            launchFireworks(10); 
+            spawnBalloons(12); 
+            showCenterMessage("💖 رسائل من القلب 💖"); 
+        }
+        
+        function goToGamePage(){ 
+            document.getElementById("thankYouPage").style.display = "none"; 
+            document.getElementById("gamePage").style.display = "block"; 
+            let s=document.getElementById("loveSlider"); 
+            if(s){ 
+                let v=s.value; 
+                document.getElementById("percentageDisplay").innerText=v+"%"; 
+                document.getElementById("gameMessage").innerHTML=getGameMessage(parseInt(v)); 
+            } 
+        }
+        
+        function setupGame(){ 
+            let s=document.getElementById("loveSlider"); 
+            if(s){ 
+                s.addEventListener("input",(e)=>{ 
+                    let v=parseInt(e.target.value); 
+                    document.getElementById("percentageDisplay").innerText=v+"%"; 
+                    document.getElementById("gameMessage").innerHTML=getGameMessage(v); 
+                    if(v===100){ 
+                        launchFireworks(8); 
+                        showCenterMessage("💯 ياه 100% أحلى مس 💯"); 
+                    } else if(v>=90) launchFireworks(3); 
+                }); 
+            } 
+        }
+        
+        function fullRestart(){ 
+            if(window.typingTimeout) clearTimeout(window.typingTimeout); 
+            if(window.countdownInterval) clearInterval(window.countdownInterval); 
+            document.querySelectorAll(".balloon").forEach(b=>b.remove()); 
+            document.getElementById("birthdayPage").style.display = "none"; 
+            document.getElementById("thankYouPage").style.display = "none"; 
+            document.getElementById("gamePage").style.display = "none"; 
+            document.getElementById("welcomePage").style.display = "flex"; 
+            document.getElementById("typingText").innerHTML = ""; 
+            document.getElementById("nextPageBtn").style.display = "none"; 
+            document.getElementById("cuteButton").style.display = "inline-block"; 
+            document.getElementById("countdown").innerHTML = ""; 
+            let sl=document.getElementById("loveSlider"); 
+            if(sl){ 
+                sl.value=50; 
+                document.getElementById("percentageDisplay").innerText="50%"; 
+                document.getElementById("gameMessage").innerHTML="اسحب الشريط عشان تعرفي..."; 
+            } 
+            let mu=document.getElementById("bgMusic"); 
+            mu.pause(); 
+            mu.currentTime=0; 
+            isTypingStarted=false; 
+        }
+        
+        function startPeriodicCelebration(){ 
+            if(window.periodicInterval) clearInterval(window.periodicInterval); 
+            window.periodicInterval = setInterval(()=>{ 
+                let vis=(document.getElementById("birthdayPage").style.display==="block"||document.getElementById("thankYouPage").style.display==="block"||document.getElementById("gamePage").style.display==="block"); 
+                if(vis){ 
+                    launchFireworks(2); 
+                    if(Math.random()>0.7) spawnBalloons(2); 
+                } 
+            },17000); 
+        }
+        
+        document.addEventListener("DOMContentLoaded",()=>{
+            document.getElementById("cuteButton")?.addEventListener("click",startGiftProcess);
+            document.getElementById("nextPageBtn")?.addEventListener("click",goToThankYouPage);
+            document.getElementById("gameButton")?.addEventListener("click",goToGamePage);
+            document.getElementById("restartFromGameBtn")?.addEventListener("click",fullRestart);
+            document.getElementById("prevCard")?.addEventListener("click", prevCard);
+            document.getElementById("nextCard")?.addEventListener("click", nextCard);
+            document.getElementById("carouselCard")?.addEventListener("click", () => {
+                const card = allCardsData[currentIndex];
+                showMessageModal(card.name, card.message);
+            });
+            
+            const carouselDiv = document.getElementById("carouselCard");
+            if(carouselDiv) {
+                carouselDiv.addEventListener("touchstart", handleTouchStart);
+                carouselDiv.addEventListener("touchend", handleTouchEnd);
+            }
+            
+            let cm=document.getElementById("closeModalBtn"), modal=document.getElementById("messageModal");
+            if(cm) cm.addEventListener("click",()=>modal.classList.remove("active"));
+            if(modal) modal.addEventListener("click",(e)=>{ if(e.target===modal) modal.classList.remove("active"); });
+            setupGame(); 
+            startPeriodicCelebration();
+            updateCarousel();
+        });
+    </script>
+</body>
+</html>
+                    font-size:1.6rem;
 font-family:"Tajawal",sans-serif;
 font-weight:800;
 cursor:pointer;
